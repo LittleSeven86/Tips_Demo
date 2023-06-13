@@ -14,4 +14,4 @@ def pdf_reader(file_path:str,page_num):
     return extract.extract_text()
 
 if __name__ == '__main__':
-    print(pdf_reader('pytest测试实战_ocr.pdf',4))
+    print(pdf_reader('../Books/pytest测试实战_ocr.pdf',4))
