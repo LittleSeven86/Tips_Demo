@@ -57,7 +57,6 @@ print(str6)
 # format 格式化方法 --指定排序
 str7 = '{3}是{0}班的学生，{1}是他的学号，数学成绩是{2:.2f}'.format(3,20,89.00000,'小明') # 小明是3班的学生，20是他的学号，数学成绩是89.0
 print(str7)
-
 # format 格式化方法 --指定关键字
 str7 = '{name}是{num}班的学生，{id}是他的学号，数学成绩是{score:.2f}'.format(num=3,id=20,score=89.00000,name='小明')
 # 小明是3班的学生，20是他的学号，数学成绩是89.0
@@ -72,24 +71,23 @@ print(f'{name}今年{age}周岁了')  # json今年18周岁了
 # 字符串切片 str[开始位置:结束位置:步长]
 str8 = 'ABCDEFG'
 print(str8[2])      #  [下标位置]--取下标为下标为2的元素--C
-
 print(str8[0:2])    #  [start:end]--取开始位置至结束位置的元素（不包括结束位置）--AB
-
 print(str8[3:])     #   [start:]--取开始位置到结束结束位置全部到元素--DEFG
-
 print(str8[:7])     #   [:end]--默认从下标位置0到结束位置--ABCDEFG
-
 print(str8[:])      #   [:]--默认输出全部位置--ABCDEFG
-
 print(str8[-4])     #   [-1]--字符串从后向前取值--D
-
 print(str8[3:0:-1]) #   当step<0时，从右向左取字符--DCB
-
 print(str8[::-1])   #   反向输出全部--GFEDCBA
-
 print(str8[::-3])   #   反向输出，步长为3--GDA
-
 print(str8[4::-1])  #   从开始位置4逆向切片--EDCBA
 
-
-
+str9,str10 = 'HELLO', 'hello'
+print(str10 in str9)
+print(str9.capitalize())
+print(str10.upper())
+print(str9.lower())
+str11 = 'ßabcd123WD'
+print(str11.casefold())
+print(str9.startswith('H',1,6))
+print(str9.center(10,'*'))
+print(str9.center(10,))
