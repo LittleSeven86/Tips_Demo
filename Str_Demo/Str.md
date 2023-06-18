@@ -36,7 +36,7 @@ print(str8[::-3])   #   反向输出，步长为3--GDA
 print(str8[4::-1])  #   从开始位置4逆向切片--EDCBA
 ```
 
-![img:png](D:\Python\Tips_Demo\IMG\字符串下标详解.png)
+![img:png](../IMG/字符串下标详解.png)
 
 ## 字符串操作
 
@@ -181,4 +181,174 @@ result1 = text.center(10)  #   HELLO
 result2 = text.center(10, "*")  # **HELLO***
 ```
 
-停更一天111
+### `str.find()`
+
+作用：返回子字符串 *sub* 在 `s[start:end]` 切片内被找到的最小索引。 可选参数 *start* 与 *end* 会被解读为切片表示法。 如果 *sub* 未被找到则返回 `-1`
+
+语法：`S.find(sub[, start[, end]]) -> int`
+
+```python
+str11 = 'e'
+str12 = 'hello world'
+res = str12.find(str11)		>>>0
+res = str12.find(str11,2,)		>>>-1
+```
+
+### `str.index()`
+
+作用：类似于 `find()`，但在找不到子字符串时会引发 `ValueError`。
+
+语法：`S.index(sub[, start[, end]]) -> int`
+
+```python
+str11 = 'e'
+str12 = 'hello world'
+res1= str12.index(str11,2,6)		>>> ValueError: substring not found
+res1= str12.index(str11)				>>> 1
+print(res1)
+```
+
+### `str.isalpha()`
+
+作用：如果字符串中的所有字符都是字母，并且至少有一个字符，返回 `True` ，否则返回 `False`
+
+```python
+str12 = 'hello world'
+print(str12[0].isalpha())		>>>True
+```
+
+### `str.isdigit()`
+
+作用：如果字符串中的所有字符都是数字，并且至少有一个字符，返回 `True` ，否则返回 `False` 。
+
+```python
+str13 = '2314as'
+print(str13.isdigit())	>>>False
+print(str13[2].isdigit())	>>>True
+```
+
+### `str.count()`
+
+作用：返回字符串中某一个元素出现的次数 。
+
+语法：`S.count(sub[, start[, end]]) -> int`
+
+```python
+str14 = 'asdfaafsdaa'
+print(str14.count('a'))		>>>5
+```
+
+### `str.join()`
+
+作用：将可迭代对象(`List、Set、Touple、Dict`)中的字符串，使用新的目标分隔符进行链接，并返回一个新的字符串
+
+语法：`'连接符'.join(目标字符串)--> str`
+
+```python
+touple1 = ('1','2','3')
+str_touple = ''.join(touple1)
+print(str_touple)
+
+list1 = ['hello','world','我','爱','python']
+_ = ','.join(list1)
+print(_)
+
+set1 = {'人生苦短','我用python'}
+__ = ','.join(touple1)
+print(__)
+
+dict1 = {'hello':'1','python':'2'}
+___ = ','.join(dict1.keys())
+____ = ','.join(dict1.values())
+print(___)
+print(____)
+```
+
+### `str.split()`
+
+作用：返回一个由字符串内单词组成的列表，使用 *sep* 作为分隔字符串。 如果给出了 *maxsplit*，则最多进行 *maxsplit* 次拆分（因此，列表最多会有 `maxsplit+1` 个元素）。 如果 *maxsplit* 未指定或为 `-1`，则不限制拆分次数（进行所有可能的拆分）。
+
+语法：`S.split(sep=target:str, maxsplit=num:int) -> list`
+
+```python
+str15 = 'hello,python,人生苦短,我用python'
+str15_list = str15.split(',',maxsplit=1)
+print(str15_list)		>>>['hello', 'python,人生苦短,我用python']
+```
+
+**进阶玩法**
+
+需求：将一个字符串分割为多个字段，但是分隔符 (还有周围的空格) 并不是固定的。
+
+```python
+_ = 'asdf fjdk; afed, fjek,asdf, foo'
+```
+
+解决方案：string 对象的 split() 方法只适应于非常简单的字符串分割情形，它并不允许有多个分隔符或者是分隔符周围不确定的空格。当你需要更加灵活的切割字符串的时候， 最好使用 re.split() 方法
+
+```python
+import re
+
+_ = 'asdf fjdk; afed, fjek,asdf, foo'
+__ = re.split(r'[;,\s]\s*',_)
+print(__)		>>>['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+
+__ = re.split(r'(;|,|\s)\s*',_)
+print(__)		>>>['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
+```
+
+
+
+### `str.strip()`
+
+作用：返回原字符串的副本，移除其中的前导和末尾字符。 *chars* 参数为指定要移除字符的字符串。 如果省略或为 `None`，则 *chars* 参数默认移除空白符。 实际上 *chars* 参数并非指定单个前缀或后缀；而是会移除参数值的所有组合 。
+
+```python
+_ = '   spacious   '.strip()
+print(_)
+
+__ = 'www.example.com'.strip('cmowz.')
+print(__)
+```
+
+### `str.replace()`
+
+作用：返回字符串的副本，其中出现的所有子字符串 *old* 都将被替换为 *new*。 如果给出了可选参数 *count*，则只替换前 *count* 次出现，
+
+语法：``str.replace(old_str, new_str,count)`
+
+```python
+_ = 'hello,neo,my boy neo'
+print(_.replace('neo','jack',1))	>>> 替换指定次数
+print(_.replace('neo','jack',2))
+print(_.replace('neo','jack'))		>>> 不给定次数，默认全部替换
+print(_.replace('neo','jack',-1))	>>> -1 表示全部替换
+```
+
+### eval()
+
+作用：返回传入字符串的表达式的结果。就是说：将字符串当成有效的表达式 来求值 并 返回计算结果。去掉字符串的引号
+
+```python
+# 1.eval无参实现字符串转化
+s = '1+2+3*5-2'
+print(eval(s))  # 16
+
+# 2.字符串中有变量也可以
+x = 1
+print(eval('x+2'))  # 3
+
+# 3.字符串转字典
+print(eval("{'name':'linux','age':18}"))
+# 输出结果：{'name':'linux','age':18}
+
+# 4.eval传递全局变量参数,注意字典里的:age中的age没有带引号，说明它是个变量，而不是字符串。
+# 这里两个参数都是全局的
+print(eval("{'name':'linux','age':age}", {"age": 1822}))
+# 输出结果：{'name': 'linux', 'age': 1822}
+print(eval("{'name':'linux','age':age}", {"age": 1822}, {"age": 1823}))
+# 输出结果：{'name': 'linux', 'age': 1823}
+```
+
+### 
+

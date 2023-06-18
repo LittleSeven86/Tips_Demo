@@ -81,10 +81,13 @@ print(str8[::-1])   #   反向输出全部--GFEDCBA
 print(str8[::-3])   #   反向输出，步长为3--GDA
 print(str8[4::-1])  #   从开始位置4逆向切片--EDCBA
 
+# str.capitalize    首字母大写
 str9,str10 = 'HELLO', 'hello'
 print(str10 in str9)
 print(str9.capitalize())
+# str.upper    全部转换成大写
 print(str10.upper())
+# str.lower   全部转换成小写
 print(str9.lower())
 str11 = 'ßabcd123WD'
 print(str11.casefold())
@@ -93,4 +96,86 @@ print(str9.center(10,'*'))
 print(str9.center(10,))
 
 
-print("hello")
+str11 = 'e'
+str12 = 'hello world'
+res = str12.find(str11,2,)
+print(res)
+
+# res1= str12.index(str11,2,6)
+res1= str12.index(str11)
+print(res1)
+
+print(str12[0].isalpha())
+
+str13 = '2314as'
+print(str13.isdigit())
+print(str13[2].isdigit())
+
+
+str14 = 'asdfaafsdaa'
+print(str14.count('a'))
+
+touple1 = ('1','2','3')
+str_touple = ''.join(touple1)
+print(str_touple)
+
+list1 = ['hello','world','我','爱','python']
+_ = ','.join(list1)
+print(_)
+
+set1 = {'人生苦短','我用python'}
+__ = ','.join(touple1)
+print(__)
+
+dict1 = {'hello':'1','python':'2'}
+___ = ','.join(dict1.keys())
+____ = ','.join(dict1.values())
+print(___)
+print(____)
+
+str15 = 'hello,python,人生苦短,我用python'
+str15_list = str15.split(',',maxsplit=1)
+print(str15_list)
+
+
+_ = '   spacious   '.strip()
+print(_)
+
+__ = 'www.example.com'.strip('cmowz.')
+print(__)
+
+_ = 'hello,neo,my boy neo'
+print(_.replace('neo','jack',1))
+print(_.replace('neo','jack',2))
+print(_.replace('neo','jack'))
+print(_.replace('neo','jack',-1))
+
+# 1.eval无参实现字符串转化
+s = '1+2+3*5-2'
+print(eval(s))  # 16
+
+# 2.字符串中有变量也可以
+x = 1
+print(eval('x+2'))  # 3
+
+# 3.字符串转字典
+print(eval("{'name':'linux','age':18}"))
+# 输出结果：{'name':'linux','age':18}
+
+# 4.eval传递全局变量参数,注意字典里的:age中的age没有带引号，说明它是个变量，而不是字符串。
+# 这里两个参数都是全局的
+print(eval("{'name':'linux','age':age}", {"age": 1822}))
+# 输出结果：{'name': 'linux', 'age': 1822}
+print(eval("{'name':'linux','age':age}", {"age": 1822}, {"age": 1823}))
+# 输出结果：{'name': 'linux', 'age': 1823}
+
+import re
+
+_ = 'asdf fjdk; afed, fjek,asdf, foo'
+# __ = re.split(r'[;,\s]\s*',_)
+# print(__)
+
+__ = re.split(r'(;|,|\s)\s*',_)
+print(__)
+
+print(''.join(v+d for v,d in zip(__[::2],__[1::2]+[''])))
