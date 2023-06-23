@@ -20,33 +20,33 @@ print("seLect * from user where %s=%s" % sql_data)	#seLect * from user where use
 
 ## 访问元祖
 
-#### 通过元组名访问
+### 通过元组名访问
 
 ```python
 tuple01 = (1,2,3,4,5)
 print(tuple01)	#(1,2,3,4,5)
 ```
 
-#### 通过下标访问
+### 通过下标访问
 
 ```python
 print(tuple01[2])	#3
 ```
 
-#### 解包
+### 解包
 
 ```python
 a1,b1,c1,d1,e1 = tuple01
 print(a1,b1,c1,d1,e1)	#1 2 3 4 5
 ```
 
-#### 切片
+### 切片
 
 ```python
 print(tuple01[2:])	#(3, 4, 5)
 ```
 
-### 删除元祖
+## 删除元祖
 
 元祖只可以进行查询，不能进行删除某个元素、修改、增加
 
@@ -72,7 +72,7 @@ print(type(tuple01),tuple01)
 
 
 
-### 元祖运算
+## 元祖运算
 
 ```python
 #元组支持+ (连接)运算
