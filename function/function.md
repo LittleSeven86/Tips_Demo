@@ -94,3 +94,126 @@ The sum is: 7
 Returned value: 7
 ```
 
+# 函数的传参
+
+在Python中，函数参数的传递方式常见的有以下几种：
+
+- 位置参数
+- 关键字参数
+- 默认参数
+- 可变数量的参数
+- 可变数量的关键字参数
+
+接下来我们一一讲解每种传递方式的示例
+
+## 位置参数
+
+最常见的参数传递方式。当调用函数时，按照定义时参数的顺序，依次传递参数的值。函数内部可以通过参数名称来访问这些传递的参数值。
+
+```python
+def check_name(name,age):
+    if name =='小明':
+        return f'是 {name}！今年他{age}岁'
+    return f'是{name}啊，不是小明，今年他{age}岁'
+
+res = check_name('小强',19)
+print(res)
+>>> 是小强啊，不是小明，今年他19岁
+```
+
+**注意事项**
+
+传递的参数个数必须等于参数列表的数量，根据函数定义的参数位置来传递参数，要求传递的参数与函数定义的参数两者一一对应，否则将会抛出错误
+
+```python
+def check_name(name,age):
+    return f'是{name}啊，今年他{age}岁'
+
+res = check_name('小强')
+print(res)
+
+>>>
+C:\Users\XXX\.virtualenvs\Tips_Demo-a-eo4_5M\Scripts\python.exe D:\Python\Tips_Demo\function\function.py 
+Traceback (most recent call last):
+  File "D:\Python\Tips_Demo\function\function.py", line 17, in <module>
+    res = check_name('小强')
+TypeError: check_name() missing 1 required positional argument: 'age'
+```
+
+## 关键字参数
+
+在调用函数时，可以使用参数的名称和相应的值来传递参数。这样可以明确指定参数的值，无需依赖位置。关键字参数可以改变传递参数的顺序，还可以使用默认参数只传递部分参数，而不是全部。
+
+```python
+def greet(age,name= '小柒'):
+    print("Hello", name, "you are", age, "years old.")
+
+greet(age=25, name="Alice")
+greet(age=25)
+
+>>>
+Hello Alice you are 25 years old.
+Hello 小柒 you are 25 years old.
+```
+
+## 默认参数
+
+函数定义时可以为参数指定默认值。如果调用函数时没有传递该参数的值，函数将使用默认值。如果传递了值，则函数将使用传递的值。
+
+```python
+def greet(name, age=30):
+    print("Hello", name, "you are", age, "years old.")
+
+greet("Alice")
+# 输出: Hello Alice you are 30 years old.
+
+greet("Bob", 25)
+# 输出: Hello Bob you are 25 years old.
+```
+
+## 可变数量的位置参数
+
+通过在参数名称前加上`*`来定义，一般定义成`*args`,它允许函数接受任意数量的位置参数，并将它们作为元组传递给函数。
+
+```python
+# 通过循环进行入参进行处理
+def add(*numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total
+
+print(add(1, 2, 3, 4))  # 输出: 10
+
+# 通过下标索引对入参进行处理
+def stu_info(*args):
+    print(f'{args[0]}同学，这次考试{args[1]}分')
+
+stu_info('小明',90)
+>>> 小明同学，这次考试90分
+```
+
+## 可变数量的关键字参数
+
+通过在参数名称前加上`**`来定义，一般定义成`**kwargs`它允许函数接受任意数量的关键字参数，并将它们作为字典传递给函数。
+
+```python
+# 通过循环进行入参进行处理
+def print_person(**person):
+    for key, value in person.items():
+        print(key, ":", value)
+
+print_person(name="Alice", age=25, city="New York")
+# 输出:
+# name : Alice
+# age : 25
+# city : New York
+
+# 通过指定键的方式进行传递
+def persion_info(**kwargs):
+    print(f'名字是：{kwargs["name"]}，今年{kwargs["age"]}岁')
+
+persion_info(name = '小柒',age = 20)
+>>> 名字是：小柒，今年20岁
+```
+
