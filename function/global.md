@@ -55,20 +55,136 @@ def update_global_varibale():
 update_global_varibale() 
 ```
 
-### 示例：全局访问函数局部变量
+## 修改全局变量
+
+### 函数外部修改
+
+```python
+global_variable = 10
+global_variable = 50
+print(global_variable)
+
+>>> 50
+```
+
+### 函数内部修改
+
+如果要在函数内部修改全局变量的值，需要使用`global`关键字在函数内部声明变量为全局变量。
 
 ```python
 global_variable = 10
 
 def update_global_varibale():
-    local_variable = 30    	# 局部变量
-    print(local_variable)   # 在函数内部访问局部变量
+    global global_variable	# 使用global关键字声明全局变量
+    global_variable = 15
+    print(global_variable)  
 
 update_global_varibale()
-print(local_variable)   #在函数外部访问局部变量，引发 NameError  
+
+>>> 15
 ```
 
-![image-20230704151237783](C:\Users\mengzhang32\AppData\Roaming\Typora\typora-user-images\image-20230704151237783.png)
+## 生命周期结束
+
+全局变量的生命周期在整个程序执行过程中持续存在，直到程序结束或使用`del`关键字显示删除
+
+```python
+global_variable = 10
+
+del global_variable
+print(global_variable)
+
+>>> NameError: name 'global_variable' is not defined
+```
+
+**Tips：**
+
+全局变量在某些情况下可以方便地共享数据和状态，并在程序的各个部分之间传递信息。然而，过多地使用全局变量可能会导致代码难以维护和理解，因此应该谨慎使用，并优先考虑使用局部变量和函数参数来封装和传递数据。
+
+# 局部变量
+
+局部变量的生命周期是指变量在其作用域内存在的时间段。在Python中，局部变量的生命周期从变量被创建时开始，直到其作用域结束或变量被销毁
+
+## 创建局部变量
+
+局部变量是在函数内部或代码块内部定义的变量。
+
+```python
+def create_local_variable():
+    local_variable = 30		# 定义局部变量
+    print(local_variable)
+
+create_local_variable()
+>>> 30
+```
+
+## 访问局部变量
+
+### 作用域内访问
+
+在函数作用域内，可以直接访问局部变量
+
+```python
+def some_function():
+    local_variable = 10
+    print(local_variable)  # 访问局部变量
+```
+
+![image-20230705101839728](C:\Users\mengzhang32\AppData\Roaming\Typora\typora-user-images\image-20230705101839728.png)
+
+### 作用域外访问
+
+```python 
+def some_function():
+    local_variable = 10
+    print(local_variable)  # 访问局部变量
+
+print(local_variable)		# 作用域外访问局部变量
+
+>>> NameError: name 'local_variable' is not defined
+```
+
+![image-20230705102151576](C:\Users\mengzhang32\AppData\Roaming\Typora\typora-user-images\image-20230705102151576.png)
+
+## 生命周期结束
+
+局部变量的生命周期在其作用域结束时终止，即函数执行结束或代码块执行结束时。
+
+```python
+def create_local_variable():
+    local_variable = 30
+    return local_variable	# 局部变量生命周期结束
+    print(local_variable)
+
+res = create_local_variable()
+print(res)
+
+>>> 30
+```
+
+## 作用域嵌套：
+
+在Python中，可以在**作用域内嵌套其他作用域**，这包括函数、类和模块。作用域嵌套允许内部作用域访问外部作用域中定义的变量、函数和类，这部分内容会在后续的**闭包**当中去讲解，我们先写一个简单的demo感受一下
+
+```python
+def outer_function():
+    x = 10
+
+    def inner_function():
+        y = 20
+        result = x + y
+        return result
+
+    return inner_function()
+
+print(outer_function())  # 输出：30
+```
+
+在上面的示例中，内部函数`inner_function`嵌套在外部函数`outer_function`中。内部函数可以访问外部函数中定义的变量`x`，并进行计算。
+
+ 
+
+
 
 **注意点：未声明全局变量，函数内修改全局变量的值，会抛出异常**
 
