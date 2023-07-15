@@ -1,0 +1,3 @@
+Function 'add' called
+Args: (2, 3)
+Kwargs: {}
