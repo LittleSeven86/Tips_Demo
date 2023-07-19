@@ -1,14 +1,11 @@
-# property
-
-## 什么是property
-
-`property`是一种内置的装饰器，用于将一个方法转换为对象的属性，从而实现属性访问的控制和定制
-
-## 语法示例
-
-示例中的属性使用了单下划线前缀，这是一种命名约定，用于**表示这些属性是受保护的**，不应直接访问。
-
-```python
+"""
+ #!/usr/bin/env python
+ # -*- coding:utf-8 -*-
+ @Author: Little Seven
+ @FileName: property_demo.py
+ @DateTime: 2023/7/17 14:41
+ @SoftWare: PyCharm
+"""
 class MyClass:
     def __init__(self):
         self._x = 0  # Use a different name for the attribute
@@ -35,16 +32,8 @@ obj.x = 10   # 设置属性x为10
 print(obj.x)  # 输出：10
 
 del obj.x   # 删除属性x
-print(obj.x)  # 输出：AttributeError: 'MyClass' object has no attribute '_x'
-```
+# print(obj.x)  # 输出：AttributeError: 'MyClass' object has no attribute '_x'
 
-## 场景应用
-
-### 数据验证和保护
-
-可以在setter方法中添加数据验证逻辑，确保对象属性的值符合特定条件
-
-```python
 class Person:
     def __init__(self, name, age):
         self._name = name
@@ -80,13 +69,8 @@ except ValueError as e:
 person1.age = 40
 
 print(person1.age)  # 输出：40
-```
 
-### 隐藏实现细节
 
- 可以将一些复杂的计算或数据转换封装在属性的getter方法中，对外部用户来说，只需访问属性即可，而不用关心底层的实现逻辑
-
-```python
 class BankAccount:
     def __init__(self, account_number, balance):
         self._account_number = account_number
@@ -113,8 +97,8 @@ class BankAccount:
 account = BankAccount("123456789", 1000)
 
 # 访问账户信息
-print("账号:", account.account_number)  # 输出: 账户: 123456789
-print("余额:", account.balance)  # 输出:余额: 1000
+print("账号:", account.account_number)  # 输出: Account Number: 123456789
+print("余额:", account.balance)  # 输出: Balance: 1000
 
 # 存款
 account.deposit(500)
@@ -123,18 +107,9 @@ account.deposit(500)
 account.withdraw(200)
 
 # 访问更新后的余额
-print("账户余额:", account.balance)  # 输出: 账户余额: 1300
-```
+print("账户余额:", account.balance)  # 输出: Updated Balance: 1300
 
-1. 简化接口：通过隐藏实现细节，外部用户只需要直接访问属性即可获取所需的结果，而不需要了解底层的算法或计算过程。这提供了一个简洁、易于使用的接口，降低了使用复杂性。
-2. 提高可维护性：隐藏实现细节可以将底层逻辑与外部代码隔离开来，使代码更具模块化和可维护性。如果需要修改底层逻辑或算法，只需修改属性的getter方法，而不会影响到外部代码的使用。
-3. 提供封装和保护：通过隐藏实现细节，可以将一些敏感或私有的数据保护起来，只暴露需要对外部可见的部分。这样可以有效地控制对数据的访问和修改，提高代码的安全性。
 
-### 惰性计算
-
-在首次访问`result`属性时，会执行复杂计算，并将结果缓存起来，后续的访问则直接返回缓存的结果，避免重复计算。这样可以显著提高性能，尤其当计算过程非常耗时时
-
-```python
 class ExpensiveComputation:
     def __init__(self, data):
         self._data = data
@@ -168,13 +143,7 @@ print("Result:", computation.result)  # 输出: 加载中... \n Result: 3
 
 # 再次访问结果，不会触发计算，直接返回缓存的结果
 print("Result:", computation.result)  # 输出: Result: 3
-```
 
-### 动态属性
-
-使用`property`可以实现动态属性，可以实现根据对象的状态或其他条件动态计算或返回属性的值，提供了一种灵活的方式来处理动态属性的需求
-
-```python
 class DynamicProperty:
     def __init__(self):
         self._status = "initial"
@@ -211,4 +180,3 @@ property_obj.complete()
 
 # 访问完成状态属性
 print(property_obj.status)  # 输出: 已关闭
-```
