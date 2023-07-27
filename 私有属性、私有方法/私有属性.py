@@ -108,7 +108,6 @@ class UserManager:
 
 # 使用UserManager类的示例
 User = UserManager()
-User.
 
 User.add_user("小柒", "xiaoqi@qq.com")
 User.add_user("小捌", "xiaoba@qq.com")
