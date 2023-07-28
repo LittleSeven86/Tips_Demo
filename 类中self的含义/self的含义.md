@@ -32,7 +32,7 @@ Allen.say_hello()
 
 当我们创建一个类的实例对象时，实际上是在内存中分配了一块空间，并将该对象的引用赋值给了变量。在调用类的方法时，Python会自动将该对象的引用作为第一个参数（即self）传递给方法。
 
-![img](C:\Users\mengzhang32\AppData\Roaming\Typora\typora-user-images\image-20230726142454808.png)
+![img](https://img-blog.csdnimg.cn/41f347331e70415c8236ffcf3c938906.png)
 
 通过self参数，可以直接访问和操作该对象的属性和方法，self参数允许方法在内部引用当前对象，从而可以获取或修改对象的状态。
 
