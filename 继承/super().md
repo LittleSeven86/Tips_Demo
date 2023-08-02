@@ -110,6 +110,10 @@ print(demob.num)
 -  在排列父类 MRO 序列时，如果一个类在其它类之前出现，则该类的所有父类都必须在其它类之前出现。
 - 如果**多个类共享同一个父类**，则该父类只**会在 MRO 序列中出现一次**。
 
+![img](https://img-blog.csdnimg.cn/741ae8e774f141c7927fae60f63804fc.png)
+
+![img](https://img-blog.csdnimg.cn/ac8714d1b92244fd8f063a1844413bd0.png)
+
 ```python 
 class Sum_Args_A(object):
     def __init__(self):
@@ -162,14 +166,3 @@ print(d.args)
 22
 ```
 
-![img](https://img-blog.csdnimg.cn/741ae8e774f141c7927fae60f63804fc.png)
-
-## 钻石继承问题
-
-钻石继承是指在类继承关系中存在一个菱形结构，即一个子类同时继承了两个父类，而这两个父类又分别继承自一个共同的祖先类，继承结构形成了一个菱形的图形，因此得名“钻石继承”。
-
-- 在钻石继承的情况下，C3算法会保证按照从左到右、深度优先的顺序来查找方法
-
-
-
-- 
