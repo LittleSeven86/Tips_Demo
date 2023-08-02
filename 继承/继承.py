@@ -16,30 +16,53 @@ class Son(Father):
         super().name()
         print('这是儿子~')
 
-Son().name()
+# Son().name()
 # print(dir(object))
 
-class Demo:
-    def __init__(self, age):
-        self.age = age
-    
-    def __getattr__(self, item):
-        print(f'获取到了属性：{item}')
-        return self.item
+class MyClass:
+    def __init__(self):
+        self.age = 20
 
-    def __setattr__(self, key, value):
-        print(f"设置属性: {key} 为 {value}")
-        super().__setattr__(key, value)
+    def __getattribute__(self, item):
+        print(f"__getattribute__() 获取到： {item}")
+        # 返回属性的值，如果属性不存在则引发AttributeError异常
+        return object.__getattribute__(self,item)
 
-    def __delattr__(self, item):
-        print(f'删除属性：{item}')
-        super().__delattr__(item)
-
-    # def __getattribute__(self, item):
-    #     print(f'获取到了属性{item}')
-    #     return self.age
+    # def __getattr__(self, item):
+    #     print(f"__getattr__() 获取到： {item}")
+    #     # 当属性不存在时返回一个默认值
+    #     raise AttributeError(f"属性 '{item}' 不存在")
 
 
-demo = Demo(20)
-# demo.age  # 输出: 获取到了属性age
-print(demo.name)
+
+# my_obj = MyClass()
+# print(my_obj.age)
+# print(my_obj.name)
+
+# print(my_obj.age)  # 调用__getattribute__()方法，属性存在
+# print(my_obj.age1)
+# 打印结果：
+# __getattribute__() 获取到： age
+# 20
+
+# print(my_obj.nonexistent_attribute)  # 调用__getattribute__()和__getattr__()方法，属性不存在
+
+# 打印结果：
+# __getattribute__() called for nonexistent_attribute
+# __getattr__() called for nonexistent_attribute
+# nonexistent_attribute does not exist.
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+# print(D.mro())
+print(dir(D))
