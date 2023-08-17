@@ -21,7 +21,7 @@ t = time.strftime("%Y_%m_%d")
 class Loggings:
     __instance = None
     logger.add(f"{log_path}/interface_log_{t}.log", rotation="500MB", encoding="utf-8", enqueue=True,
-               retention="10 days",
+               retention="10 days",)
 
     def __new__(cls, *args, **kwargs):
         if not cls.__instance:
