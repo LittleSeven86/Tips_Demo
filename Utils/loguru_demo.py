@@ -6,8 +6,6 @@
  @DateTime: 2023/8/17 16:36
  @SoftWare: PyCharm
 """
-"""操作日志记录
-"""
 import time
 from loguru import logger
 from pathlib import Path
@@ -20,8 +18,28 @@ t = time.strftime("%Y_%m_%d")
 
 class Loggings:
     __instance = None
-    logger.add(f"{log_path}/interface_log_{t}.log", rotation="500MB", encoding="utf-8", enqueue=True,
-               retention="10 days",)
+
+    def __init__(self):
+        logger.remove()
+        logger.add(
+            f"{log_path}/interface_log_{t}.log",
+            backtrace=True,
+            diagnose=True,
+            rotation="500MB",
+            encoding="utf-8",
+            enqueue=True,
+            retention="10 days",
+            format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | 进程号： {process} | 线程号：{thread} | 模块名：{file} | 方法：{function}| 行号：{line} - | msg：{message}"
+        )
+        logger.add(
+            sys.stdout,
+            colorize=True,
+            backtrace=True,
+            diagnose=True,
+            # format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green>  <level> | {level} | </level> <cyan>模块名：{file}</cyan> | <cyan>方法：{function}</cyan> | <cyan>行号：{line}</cyan> - | <level> msg：{message}</level>")
+            format="<level>{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | 进程号： {process} | 线程号：{thread} | 模块名：{file} | 方法：{function} | 行号：{line} - | msg：{message}</level>")
+
+
 
     def __new__(cls, *args, **kwargs):
         if not cls.__instance:
@@ -41,24 +59,30 @@ class Loggings:
     def error(self, msg):
         return logger.error(msg)
 
+    def critical(self,msg):
+        return logger.critical(msg)
+
+    def notify(self):
+        '''
+        结合提醒Loguru 可以轻松地与强大的库（必须单独安装）结合使用notifiers，以便在程序意外失败时接收电子邮件或发送许多其他类型的通知。
+        :return:
+        '''
+        pass
+        #TODO
 
 loggings = Loggings()
+
+
 if __name__ == '__main__':
-    loggings.info("中文test")
-    loggings.debug("中文test")
-    loggings.warning("中文test")
-    loggings.error("中文test")
-
-    logger.info('If you are using Python {}, prefer {feature} of course!', 3.6, feature='f-strings')
-    n1 = "cool"
-    n2 = [1, 2, 3]
-    logger.info(f'If you are using Python {n1}, prefer {n2} of course!')
+    logger.info('test')
+    # print(1/0)
 
 
-    @logger.catch
-    def my_function(x, y, z):
-        # An error? It's caught anyway!
-        return 1 / (x + y + z)
 
-    my_function(0,0,0)
-    logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>")
+    pass
+    # @logger.catch
+    # def my_function(x, y, z):
+    #     # An error? It's caught anyway!
+    #     return 1 / (x + y + z)
+    #
+    # my_function(0,0,0)
