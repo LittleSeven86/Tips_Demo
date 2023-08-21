@@ -1,0 +1,11 @@
+test: 这是一个测试标题
+
+step:
+  headers: test
+  body:
+    param1: parm
+    param2: patam2
+
+validate:
+  - equal: 1
+  - equals: 2

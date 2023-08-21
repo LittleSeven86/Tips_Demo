@@ -1,0 +1,25 @@
+2023-08-21 15:41:20.892 | INFO | 进程号： 5632 | 线程号：11780 | 模块名：pyyaml.py | 方法：get_yaml_data| 行号：30 - | msg：测试用例参数：{'test': '这是一个测试标题', 'step': {'headers': 'test', 'body': {'param1': 'parm', 'param2': 'patam2'}}, 'validate': [{'equal': 1}, {'equals': 2}]}
+2023-08-21 15:41:38.648 | ERROR | 进程号： 21544 | 线程号：22400 | 模块名：pyyaml.py | 方法：<module>| 行号：89 - | msg：An error has been caught in function '<module>', process 'MainProcess' (21544), thread 'MainThread' (22400):
+Traceback (most recent call last):
+
+> File "D:\Python\Tips_Demo\pyyaml_demo\pyyaml.py", line 89, in <module>
+    res= case_data.get_yaml_data()
+         │         └ <function GetYamlData.get_yaml_data at 0x000002AF38E22440>
+         └ <__main__.GetCaseData object at 0x000002AF38DF78B0>
+
+  File "D:\Python\Tips_Demo\pyyaml_demo\pyyaml.py", line 33, in get_yaml_data
+    raise FileNotFoundError(f"文件路径{self.file_dir}不存在")
+
+FileNotFoundError: 文件路径demo_11.yml不存在
+2023-08-21 15:42:18.226 | ERROR | 进程号： 13528 | 线程号：21436 | 模块名：pyyaml.py | 方法：<module>| 行号：88 - | msg：An error has been caught in function '<module>', process 'MainProcess' (13528), thread 'MainThread' (21436):
+Traceback (most recent call last):
+
+> File "D:\Python\Tips_Demo\pyyaml_demo\pyyaml.py", line 88, in <module>
+    res= case_data.get_yaml_data()
+         │         └ <function GetYamlData.get_yaml_data at 0x00000192F41E2440>
+         └ <__main__.GetCaseData object at 0x00000192F41BB7F0>
+
+  File "D:\Python\Tips_Demo\pyyaml_demo\pyyaml.py", line 33, in get_yaml_data
+    raise FileNotFoundError(f"文件路径{self.file_dir}不存在")
+
+FileNotFoundError: 文件路径demo_11.yml不存在

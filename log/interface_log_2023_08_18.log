@@ -1,0 +1,83 @@
+2023-08-18 15:57:37.284 | INFO | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：stu_info| 行号：27 - | msg：执行了stu_info
+2023-08-18 15:57:37.284 | WARNING | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：stu_info| 行号：28 - | msg：执行了stu_info
+2023-08-18 15:57:37.285 | DEBUG | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：stu_info| 行号：29 - | msg：执行了stu_info
+2023-08-18 15:57:37.285 | CRITICAL | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：stu_info| 行号：30 - | msg：执行了stu_info
+2023-08-18 15:57:37.285 | ERROR | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：stu_info| 行号：31 - | msg：执行了stu_info
+2023-08-18 15:57:37.285 | ERROR | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：<module>| 行号：39 - | msg：An error has been caught in function '<module>', process 'MainProcess' (11492), thread 'MainThread' (18512):
+Traceback (most recent call last):
+
+> File "D:\Python\Tips_Demo\function\function.py", line 39, in <module>
+    a()
+    └ <function a at 0x0000017683989000>
+
+  File "D:\Python\Tips_Demo\function\function.py", line 37, in a
+    return 1/0
+
+ZeroDivisionError: division by zero
+2023-08-18 15:57:37.290 | ERROR | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：nested| 行号：50 - | msg：异常捕获了
+Traceback (most recent call last):
+
+  File "D:\Python\Tips_Demo\function\function.py", line 53, in <module>
+    nested(0)
+    └ <function nested at 0x0000017683989360>
+
+> File "D:\Python\Tips_Demo\function\function.py", line 48, in nested
+    func(5, c)
+    │       └ 0
+    └ <function func at 0x00000176839893F0>
+
+  File "D:\Python\Tips_Demo\function\function.py", line 43, in func
+    return a / b
+           │   └ 0
+           └ 5
+
+ZeroDivisionError: division by zero
+2023-08-18 15:57:37.291 | INFO | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：print_person| 行号：59 - | msg：12345
+2023-08-18 15:57:37.292 | INFO | 进程号： 11492 | 线程号：18512 | 模块名：function.py | 方法：__init__| 行号：74 - | msg：test
+2023-08-18 15:59:15.587 | INFO | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：stu_info| 行号：27 - | msg：执行了stu_info
+2023-08-18 15:59:15.587 | WARNING | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：stu_info| 行号：28 - | msg：执行了stu_info
+2023-08-18 15:59:15.588 | DEBUG | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：stu_info| 行号：29 - | msg：执行了stu_info
+2023-08-18 15:59:15.588 | CRITICAL | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：stu_info| 行号：30 - | msg：执行了stu_info
+2023-08-18 15:59:15.588 | ERROR | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：stu_info| 行号：31 - | msg：执行了stu_info
+2023-08-18 15:59:15.589 | ERROR | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：<module>| 行号：39 - | msg：An error has been caught in function '<module>', process 'MainProcess' (21332), thread 'MainThread' (20900):
+Traceback (most recent call last):
+
+> File "D:\Python\Tips_Demo\function\function.py", line 39, in <module>
+    a()
+    └ <function a at 0x000001E6C8E59000>
+
+  File "D:\Python\Tips_Demo\function\function.py", line 37, in a
+    return 1/0
+
+ZeroDivisionError: division by zero
+2023-08-18 15:59:15.593 | ERROR | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：<module>| 行号：41 - | msg：An error has been caught in function '<module>', process 'MainProcess' (21332), thread 'MainThread' (20900):
+Traceback (most recent call last):
+
+> File "D:\Python\Tips_Demo\function\function.py", line 41, in <module>
+    a()
+    └ <function a at 0x000001E6C8E59000>
+
+  File "D:\Python\Tips_Demo\function\function.py", line 37, in a
+    return 1/0
+
+ZeroDivisionError: division by zero
+2023-08-18 15:59:15.593 | ERROR | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：nested| 行号：53 - | msg：异常捕获了
+Traceback (most recent call last):
+
+  File "D:\Python\Tips_Demo\function\function.py", line 56, in <module>
+    nested(0)
+    └ <function nested at 0x000001E6C8E593F0>
+
+> File "D:\Python\Tips_Demo\function\function.py", line 51, in nested
+    func(5, c)
+    │       └ 0
+    └ <function func at 0x000001E6C8E59360>
+
+  File "D:\Python\Tips_Demo\function\function.py", line 46, in func
+    return a / b
+           │   └ 0
+           └ 5
+
+ZeroDivisionError: division by zero
+2023-08-18 15:59:15.595 | INFO | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：print_person| 行号：62 - | msg：12345
+2023-08-18 15:59:15.595 | INFO | 进程号： 21332 | 线程号：20900 | 模块名：function.py | 方法：__init__| 行号：77 - | msg：test
